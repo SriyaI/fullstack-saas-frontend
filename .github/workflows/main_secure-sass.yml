@@ -33,7 +33,7 @@ jobs:
         npm install
         npm run build --if-present
         npm run test --if-present
-      working-directory:  .
+      working-directory:  ./build
                
     # deploy web app using Azure credentials
     - uses: azure/webapps-deploy@v3

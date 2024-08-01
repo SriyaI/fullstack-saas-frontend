@@ -3,7 +3,7 @@ import { REGISTER_SUCCESS, LOGIN_SUCCESS, LOGOUT, GET_PROFILE, GET_PROFILE_ERROR
 
 export const register = (userData) => async dispatch => {
   try {
-    const res = await axios.post('http://secure-saas-service.azurewebsites.net/users/register', userData);
+    const res = await axios.post('https://secure-saas-service.azurewebsites.net/users/register', userData);
     dispatch({ type: REGISTER_SUCCESS, payload: res.data });
   } catch (err) {
     console.error(err);
@@ -12,7 +12,7 @@ export const register = (userData) => async dispatch => {
 
 export const login = (userData) => async dispatch => {
   try {
-    const res = await axios.post('http://secure-saas-service.azurewebsites.net/users/login', userData);
+    const res = await axios.post('https://secure-saas-service.azurewebsites.net/users/login', userData);
     dispatch({ type: LOGIN_SUCCESS, payload: res.data });
   } catch (err) {
     console.error(err);
@@ -21,7 +21,7 @@ export const login = (userData) => async dispatch => {
 
 export const getProfile = () => async dispatch => {
     try {
-      const res = await axios.get('http://secure-saas-service.azurewebsites.net/users/profile', {
+      const res = await axios.get('https://secure-saas-service.azurewebsites.net/users/profile', {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`, // Assuming token is stored in localStorage
         },

@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { REGISTER_SUCCESS, LOGIN_SUCCESS, LOGOUT, GET_PROFILE, GET_PROFILE_ERROR, GOOGLE_LOGIN_SUCCESS, GOOGLE_LOGIN_FAILURE } from './types';
 
-//const apiBaseUrl = 'https://secure-saas-service.azurewebsites.net/users';
-const apiBaseUrl = 'http://localhost:3001/users';
+const apiBaseUrl = 'https://secure-saas-service.azurewebsites.net/users';
+//const apiBaseUrl = 'http://localhost:3001/users';
 
 export const register = (userData) => async dispatch => {
   try {

@@ -40,9 +40,11 @@ const Login = () => {
     <div className="login-container">
       <div className="login-card">
         <h2>Login</h2>
-        <button className="google-signin" onClick={handleGoogleSignIn}>
-          <GoogleIcon /> Sign in with Google
-        </button>
+        <div class="button-container">
+          <button className="google-signin" onClick={handleGoogleSignIn}>
+            <GoogleIcon /> Sign in with Google
+          </button>
+        </div>
         <form onSubmit={handleSubmit}>
           <div className="input-group">
             <label>Email:</label>
@@ -64,7 +66,9 @@ const Login = () => {
               data-cy="password-input"
             />
           </div>
-          <button type="submit">Login</button>
+          <div class="button-container">
+            <button type="submit">Login</button>
+          </div>
         </form>
         <p className="register-link">
           New here? <Link to="/register">Register</Link>

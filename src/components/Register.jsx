@@ -122,7 +122,9 @@ const Register = () => {
               data-cy="company-input"
             />
           </div>
-          <button type="submit" data-cy="register-button">Register</button>
+          <div class="button-container">
+            <button type="submit" data-cy="register-button">Register</button>
+          </div>
         </form>
       </div>
     </div>

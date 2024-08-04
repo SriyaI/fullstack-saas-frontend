@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { auth, provider, signInWithPopup } from '../firebase'; // Ensure correct import paths
-import { login, googleLogin } from '../redux/actions/authActions'; // Ensure correct import paths
+import { useNavigate, Link } from 'react-router-dom';
+import { auth, provider, signInWithPopup } from '../firebase';
+import { login, googleLogin } from '../redux/actions/authActions';
+import GoogleIcon from '@mui/icons-material/Google';
+import './Login.css';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -25,7 +27,7 @@ const Login = () => {
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
       const token = await user.getIdToken();
-      console.log(token)
+      console.log(token);
       // Dispatch the token and user info to the Redux store
       await dispatch(googleLogin({ token }));
       navigate('/profile');
@@ -35,30 +37,39 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Email:</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">Login</button>
-      </form>
-      <button onClick={handleGoogleSignIn}>Sign in with Google</button>
+    <div className="login-container">
+      <div className="login-card">
+        <h2>Login</h2>
+        <button className="google-signin" onClick={handleGoogleSignIn}>
+          <GoogleIcon /> Sign in with Google
+        </button>
+        <form onSubmit={handleSubmit}>
+          <div className="input-group">
+            <label>Email:</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              data-cy="email-input"
+            />
+          </div>
+          <div className="input-group">
+            <label>Password:</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              data-cy="password-input"
+            />
+          </div>
+          <button type="submit">Login</button>
+        </form>
+        <p className="register-link">
+          New here? <Link to="/register">Register</Link>
+        </p>
+      </div>
     </div>
   );
 };
